@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SarojmartEcommerce/static/css/main.e6c13ad2.css",
+    "main.js": "/SarojmartEcommerce/static/js/main.b34706d0.js",
+    "static/js/787.5c65c091.chunk.js": "/SarojmartEcommerce/static/js/787.5c65c091.chunk.js",
+    "index.html": "/SarojmartEcommerce/index.html",
+    "main.e6c13ad2.css.map": "/SarojmartEcommerce/static/css/main.e6c13ad2.css.map",
+    "main.b34706d0.js.map": "/SarojmartEcommerce/static/js/main.b34706d0.js.map",
+    "787.5c65c091.chunk.js.map": "/SarojmartEcommerce/static/js/787.5c65c091.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.b34706d0.js"
+  ]
+}
