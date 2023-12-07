@@ -6,20 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { AppProvider } from "./context/productcontex";
 import { FilterContextProvider } from "./context/filter_context";
 import { CartProvider } from "./context/cart_context";
-import { Auth0Provider } from "@auth0/auth0-react";
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const domain = process.env.REACT_APP_AUTH_DOMAIN;
-const clientId = process.env.REACT_APP_CLIENT_ID;
+
 
 root.render(
   <Auth0Provider
-  domain="dev-5wde5tk4zhp5aqwb.us.auth0.com"
-  clientId="fYYtk4n6piMXA2H5l6t3oVxFVAj39tbg"
-  authorizationParams={{
-    redirect_uri: window.location.origin
-  }}>
+    domain="dev-dbuk2niqvw4xpsw.us.auth0.com"
+    clientId="U7FB20ztqnMAdnLORRZe6ypSID8AAtLc"
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
     <AppProvider>
       <FilterContextProvider>
         <CartProvider>

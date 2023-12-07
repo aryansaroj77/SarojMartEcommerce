@@ -24,11 +24,7 @@ const HeroSection = ({ myData }) => {
           {/* our homepage image  */}
           <div className="hero-section-image">
             <figure>
-              <img
-                src="images/hero.jpg"
-                alt="hero-section-photo"
-                className="img-style"
-              />
+              <img src={process.env.PUBLIC_URL + "/images/hero.jpg"} alt="my logo img" className="logo" />
             </figure>
           </div>
         </div>
@@ -41,8 +37,8 @@ const Wrapper = styled.section`
   padding: 12rem 0;
 
   img {
-    min-width: 10rem;
-    height: 10rem;
+    min-width: 50rem;
+    height: 40rem;
   }
 
   .hero-section-data {
