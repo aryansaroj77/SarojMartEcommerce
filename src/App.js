@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
@@ -11,9 +11,16 @@ import { GlobalStyle } from "./GlobalStyle";
 import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Signup from "./Signup";
+import Login from "./components/Login/Login";
+import Register from "./components/Signup/Register";
+
+
 
 const App = () => {
+  
+
+
+
   const theme = {
     colors: {
       heading: "rgb(24 24 29)",
@@ -45,14 +52,15 @@ const App = () => {
         <GlobalStyle />
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/singleproduct/:id" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/Login" element={<Login/>} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </Router>

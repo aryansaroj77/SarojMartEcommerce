@@ -1,18 +1,39 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, {useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useCartContext } from "../context/cart_context";
 import { Button } from "../styles/Button";
-import Signup from "../Signup";
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from './fireBase'; 
+import { signOut } from 'firebase/auth';
 
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState();
-  const { total_item } = useCartContext();
-  
+  const { total_item } = useCartContext()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Check if the user is already logged in when the component mounts
+  const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    // Use useEffect to set the state only once after the initial render
+    if (user) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [user]);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setIsLoggedIn(false);
+    } catch (error) {
+      console.error('Error during logout:', error.message);
+    }
+  }
   const Nav = styled.nav`
     .navbar-lists {
       display: flex;
@@ -165,6 +186,10 @@ const Nav = () => {
         padding: 0.8rem 1.4rem;
       }
     }
+
+    .user-name{
+      font-size: 2.2rem;
+    }
   `;
 
   return (
@@ -203,13 +228,20 @@ const Nav = () => {
               Contact
             </NavLink>
           </li>
+          {isLoggedIn ? (
+          // Show Logout button when user is logged in
           <li>
-          {/* <NavLink to="/signup"
-           className="navbar-link "
-          > login</NavLink> */}
-          <Signup />
+            <Button onClick={handleLogout}>Logout</Button>
+            <li className="user-name">Welcome {user.email}</li>
           </li>
-
+        ) : (
+          // Show Login button when user is not logged in
+          <li>
+            <Button>
+            <Link to="/login">Login</Link>
+            </Button>
+          </li>
+        )}
 
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
